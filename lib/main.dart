@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_dart/Views/LoginView.dart';
 import 'package:learning_dart/Views/RegisterView.dart';
 import 'package:learning_dart/Views/VerifyEmailView.dart';
+import 'package:learning_dart/constants/routes.dart';
 
 import 'firebase_options.dart';
 
@@ -17,9 +18,9 @@ void main() {
       ),
       home: const HomePage(),
       routes: {
-        '/login/' : (context) => const LoginView(),
-        '/register/' : (context) => const RegisterView(),
-        '/notes/' : (context) => const NotesView(),
+        loginRoute : (context) => const LoginView(),
+        registerRoute : (context) => const RegisterView(),
+        notesRoute : (context) => const NotesView(),
       },
     ),
   );
@@ -47,7 +48,6 @@ class HomePage extends StatelessWidget {
             } else {
               return const LoginView();
             }
-            return const Text("DONE!");
           default:
             return const CircularProgressIndicator();
         }
@@ -80,7 +80,7 @@ class _NotesViewState extends State<NotesView> {
                   if (shouldLogOut){
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/login/',
+                        loginRoute,
                             (_) => false
                     );
                   }
