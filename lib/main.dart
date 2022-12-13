@@ -5,7 +5,6 @@ import 'package:learning_dart/Views/LoginView.dart';
 import 'package:learning_dart/Views/RegisterView.dart';
 import 'package:learning_dart/Views/VerifyEmailView.dart';
 import 'package:learning_dart/constants/routes.dart';
-
 import 'firebase_options.dart';
 
 void main() {
@@ -21,6 +20,7 @@ void main() {
         loginRoute : (context) => const LoginView(),
         registerRoute : (context) => const RegisterView(),
         notesRoute : (context) => const NotesView(),
+        verifyEmailRoute : (context) => const VerifyEmailView(),
       },
     ),
   );
@@ -128,21 +128,3 @@ Future<bool> showLogOutDialog(BuildContext context) {
     }
   ).then((value) => value ?? false);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
