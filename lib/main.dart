@@ -4,7 +4,9 @@ import 'package:learning_dart/Views/LoginView.dart';
 import 'package:learning_dart/Views/RegisterView.dart';
 import 'package:learning_dart/Views/VerifyEmailView.dart';
 import 'package:learning_dart/constants/routes.dart';
-import 'Views/notes_view.dart';
+import 'package:path/path.dart';
+import 'Views/notes/new_note_view.dart';
+import 'Views/notes/notes_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,7 @@ void main() {
         registerRoute : (context) => const RegisterView(),
         notesRoute : (context) => const NotesView(),
         verifyEmailRoute : (context) => const VerifyEmailView(),
+        newNoteRoute : (context) => const NewNoteView(),
       },
     ),
   );
