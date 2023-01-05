@@ -229,7 +229,6 @@ class NotesService {
   }
 
   Future<void> open() async {
-    await _ensureDbIsOpen();
     if (_db != null) {
       throw DatabaseAlreadyOpenException();
     }
@@ -239,24 +238,12 @@ class NotesService {
       final db = await openDatabase(dbPath);
       _db = db;
 
-      const createUserTable = '''CREATE TABLE IF NOT EXISTS "user" (
-        "id"	INTEGER NOT NULL,
-        "email"	TEXT NOT NULL UNIQUE,
-        PRIMARY KEY("id" AUTOINCREMENT)
-      ); ''';
-
       await db.execute(createUserTable);
 
-      const createNotesTable = '''CREATE TABLE IF NOT EXISTS "Notes" (
-        "id"	INTEGER NOT NULL,
-        "user_id"	INTEGER NOT NULL,
-        "text"	TEXT,
-        "synced"	INTEGER NOT NULL DEFAULT 0,
-        PRIMARY KEY("id" AUTOINCREMENT)
-      ); ''';
-
       await db.execute(createNotesTable);
+
       await _cacheNotes();
+
     } on MissingPlatformDirectoryException {
       throw UnableToGetDocumentsDirectory();
     }
@@ -327,7 +314,7 @@ const idColumn = 'id';
 const emailColumn = 'email';
 const userIdColumn = 'user_id';
 const textColumn = 'text';
-const isSyncedColumn = 'is_synced';
+const isSyncedColumn = 'synced';
 const createUserTable = '''CREATE TABLE IF NOT EXISTS "user" (
         "id"	INTEGER NOT NULL,
         "email"	TEXT NOT NULL UNIQUE,
@@ -338,5 +325,6 @@ const createNotesTable = '''CREATE TABLE IF NOT EXISTS "Notes" (
         "user_id"	INTEGER NOT NULL,
         "text"	TEXT,
         "synced"	INTEGER NOT NULL DEFAULT 0,
+        FOREIGN KEY("user_id") REFERENCES "user"("id"),
         PRIMARY KEY("id" AUTOINCREMENT)
       ); ''';
