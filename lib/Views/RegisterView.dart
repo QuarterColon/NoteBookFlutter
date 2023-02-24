@@ -1,13 +1,11 @@
 
-import 'package:firebase/firebase.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learning_dart/Services/auth/auth_exceptions.dart';
-import 'package:learning_dart/Services/auth/auth_service.dart';
 import 'package:learning_dart/Services/auth/bloc/auth_bloc.dart';
 import 'package:learning_dart/Services/auth/bloc/auth_events.dart';
 import 'package:learning_dart/Services/auth/bloc/auth_state.dart';
-import 'package:learning_dart/constants/routes.dart';
 import '../utilities/dialogs/error_dialog.dart';
 
 

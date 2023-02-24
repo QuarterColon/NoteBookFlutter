@@ -1,5 +1,3 @@
-
-
 import 'package:bloc/bloc.dart';
 import 'package:learning_dart/Services/auth/auth_provider.dart';
 import 'package:learning_dart/Services/auth/bloc/auth_events.dart';
@@ -43,6 +41,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>  {
           null,
           true,
       ));
+
       final email = event.email;
       final password = event.password;
       try{
