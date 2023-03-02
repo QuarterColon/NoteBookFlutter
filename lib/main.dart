@@ -7,6 +7,7 @@ import 'package:learning_dart/Services/auth/firebase_auth_provider.dart';
 import 'package:learning_dart/Views/LoginView.dart';
 import 'package:learning_dart/Views/RegisterView.dart';
 import 'package:learning_dart/Views/VerifyEmailView.dart';
+import 'package:learning_dart/Views/forgot_password_view.dart';
 import 'package:learning_dart/constants/routes.dart';
 import 'package:learning_dart/helpers/loading/loading_screen.dart';
 import 'Views/notes/create_update_note_view.dart';
@@ -47,10 +48,13 @@ class HomePage extends StatelessWidget {
             return const LoginView();
           } else if(state is AuthStateRegistering) {
             return const RegisterView();
-          } else {
-            return const Scaffold(
-              body: CircularProgressIndicator(),
-            );
+          } else if (state is AuthStateForgotPassword){
+            return const ForgotPasswordView();
+          }
+            else {
+              return const Scaffold(
+                body: CircularProgressIndicator(),
+              );
           }
           },
     listener: (context, state) {
