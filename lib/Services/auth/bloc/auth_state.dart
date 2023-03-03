@@ -34,7 +34,7 @@ class AuthStateLoggedOut extends AuthState with EquatableMixin{
   const AuthStateLoggedOut({
     required this.exception,
     required bool isLoading,
-    required String? loadingText}) :
+    String? loadingText}) :
         super(
           isLoading: isLoading,
           loadingText: loadingText,);
