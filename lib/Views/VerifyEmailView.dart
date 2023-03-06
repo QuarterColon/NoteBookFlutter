@@ -15,7 +15,8 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Verify Email'),),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             const Text("A verification email has already been sent. If not,"),
             const Text('please verify your email address:'),
@@ -31,6 +32,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
             ),
           ]
       ),
+      )
     );
   }
 }
